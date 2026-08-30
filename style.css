@@ -196,14 +196,64 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 /* ============================================================
+   Top utility bar
+   ============================================================ */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 501;
+  height: 38px;
+  background: var(--grad-brand);
+  color: #fff;
+  transition: transform 0.35s var(--ease);
+}
+.topbar-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.topbar-left { display: flex; align-items: center; gap: 24px; }
+.topbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0.95;
+  transition: opacity 0.2s;
+}
+.topbar a:hover { opacity: 0.7; }
+.topbar svg { width: 13px; height: 13px; flex-shrink: 0; }
+.topbar-right {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+.topbar.hide-bar { transform: translateY(-100%); }
+
+@media (max-width: 720px) {
+  .topbar-email { display: none; }
+}
+@media (max-width: 560px) {
+  .topbar { display: none; }
+}
+
+/* ============================================================
    Navbar
    ============================================================ */
 .navbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 38px; left: 0; right: 0;
   z-index: 500;
   padding: 22px 0;
-  transition: padding 0.35s var(--ease), background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  background: rgba(255, 255, 255, 0.0);
+  transition: padding 0.35s var(--ease), background 0.35s var(--ease), box-shadow 0.35s var(--ease), top 0.35s var(--ease);
+}
+@media (max-width: 560px) {
+  .navbar { top: 0; }
 }
 .navbar.scrolled {
   padding: 12px 0;
@@ -222,11 +272,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 19px;
+  font-size: clamp(15px, 4vw, 19px);
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
 }
 .logo .mark {
   width: 38px; height: 38px;
@@ -239,7 +292,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 16px;
   box-shadow: var(--shadow-brand);
 }
-.logo img.mark-img { width: 38px; height: 38px; border-radius: 11px; object-fit: cover; box-shadow: var(--shadow-brand); }
+.logo img.mark-img { width: 38px; height: 38px; border-radius: 11px; object-fit: cover; box-shadow: var(--shadow-brand); flex-shrink: 0; }
 .logo .accent-dot { color: var(--gold); }
 
 .nav-links {
@@ -290,7 +343,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .nav-cta .btn-ghost { display: none; }
+  .nav-cta { display: none; }
   .nav-toggle { display: flex; }
 }
 

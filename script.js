@@ -7,14 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---- Navbar shrink on scroll ----
+  // ---- Navbar shrink on scroll + hide top bar ----
   const navbar = document.getElementById("navbar");
+  const topbar = document.getElementById("topbar");
   const backToTop = document.getElementById("backToTop");
   const onScroll = () => {
     if (window.scrollY > 40) {
       navbar.classList.add("scrolled");
     } else {
       navbar.classList.remove("scrolled");
+    }
+    if (topbar) {
+      if (window.scrollY > 80) {
+        topbar.classList.add("hide-bar");
+        navbar.style.top = "0px";
+      } else {
+        topbar.classList.remove("hide-bar");
+        navbar.style.top = "";
+      }
     }
     if (backToTop) {
       if (window.scrollY > 600) backToTop.classList.add("visible");
