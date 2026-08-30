@@ -268,15 +268,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(15px, 4vw, 19px);
-  letter-spacing: -0.01em;
+  font-size: clamp(17px, 4.4vw, 23px);
+  letter-spacing: -0.015em;
   white-space: nowrap;
   flex-shrink: 1;
   min-width: 0;
 }
+.logo-prefix {
+  font-weight: 500;
+  color: var(--ink-faint);
+  font-size: 0.72em;
+  letter-spacing: 0;
+  margin-right: 1px;
+}
+.logo-suffix {
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.accent-dot { color: var(--gold); font-weight: 800; }
 .logo .mark {
   width: 38px; height: 38px;
   border-radius: 11px;
@@ -289,7 +302,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   box-shadow: var(--shadow-brand);
 }
 .logo img.mark-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-brand); flex-shrink: 0; }
-.logo .accent-dot { color: var(--gold); }
 
 .nav-links {
   display: flex;
@@ -669,8 +681,79 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Marquee strip
+   Live Demo — animated cursor walkthrough
    ============================================================ */
+.demo-section { background: var(--bg-soft); }
+
+.demo-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.demo-browser {
+  transform: perspective(1400px) rotateX(1deg);
+  animation: none;
+  position: relative;
+}
+
+.demo-cursor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 22%;
+  left: 78%;
+  z-index: 6;
+  animation: cursorMove 9s ease-in-out infinite;
+  pointer-events: none;
+}
+.demo-cursor .arrow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 22px; height: 26px;
+  filter: drop-shadow(0 3px 6px rgba(18,18,26,0.35));
+}
+.demo-cursor .ripple {
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2.5px solid var(--gold);
+  opacity: 0;
+  transform: scale(0.4);
+  animation: clickPulse 9s ease-in-out infinite;
+}
+
+@keyframes cursorMove {
+  0%   { top: 20%; left: 76%; }
+  8%   { top: 20%; left: 76%; }
+  22%  { top: 40%; left: 52%; }
+  30%  { top: 40%; left: 52%; }
+  46%  { top: 66%; left: 20%; }
+  54%  { top: 66%; left: 20%; }
+  70%  { top: 66%; left: 82%; }
+  78%  { top: 66%; left: 82%; }
+  100% { top: 20%; left: 76%; }
+}
+
+@keyframes clickPulse {
+  0%, 5%   { opacity: 0; transform: scale(0.4); }
+  8%       { opacity: 0.9; transform: scale(1); }
+  15%, 21% { opacity: 0; transform: scale(1.8); }
+  27%      { opacity: 0; transform: scale(0.4); }
+  30%      { opacity: 0.9; transform: scale(1); }
+  37%, 45% { opacity: 0; transform: scale(1.8); }
+  51%      { opacity: 0; transform: scale(0.4); }
+  54%      { opacity: 0.9; transform: scale(1); }
+  61%, 69% { opacity: 0; transform: scale(1.8); }
+  75%      { opacity: 0; transform: scale(0.4); }
+  78%      { opacity: 0.9; transform: scale(1); }
+  85%, 100% { opacity: 0; transform: scale(1.8); }
+}
+
+@media (max-width: 560px) {
+  .demo-browser { transform: none; }
+  .demo-cursor .arrow { width: 18px; height: 21px; }
+}
 .marquee-strip {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
