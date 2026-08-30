@@ -820,8 +820,68 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   Process
+   Tech showcase — auto-sliding pages
    ============================================================ */
+.tech-section { padding-bottom: 90px; }
+.tech-slider-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.tech-slider-track {
+  display: flex;
+  width: max-content;
+  gap: 22px;
+  animation: slideTech 34s linear infinite;
+}
+.tech-slider-wrap:hover .tech-slider-track { animation-play-state: paused; }
+
+.tech-card {
+  width: 270px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.tech-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+
+.tech-card-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+}
+.tech-card-bar span { width: 7px; height: 7px; border-radius: 50%; }
+.tech-card-bar span:nth-child(1) { background: #ff5f57; }
+.tech-card-bar span:nth-child(2) { background: #febc2e; }
+.tech-card-bar span:nth-child(3) { background: #28c840; }
+
+.tech-card-body { padding: 24px 22px; }
+.tech-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--grad-brand);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.tech-icon svg { width: 22px; height: 22px; }
+.tech-card-body h4 { font-size: 16.5px; margin-bottom: 8px; }
+.tech-card-body p { font-size: 13.5px; color: var(--ink-soft); }
+
+@keyframes slideTech {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 560px) {
+  .tech-card { width: 220px; }
+}
 .process-section { background: var(--bg-soft); }
 .process-list {
   display: grid;
