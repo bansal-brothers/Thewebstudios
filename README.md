@@ -1,44 +1,39 @@
-# TheWebStudios — Agency Website
+# TheWebStudios — Agency Website (Flat Version)
 
-A professional, animated one-page website for **TheWebStudios**, a web design & development agency. Built with plain HTML, CSS, and JavaScript — no build step, no framework — so it can be uploaded to GitHub / GitHub Pages directly.
+This is a **flat, no-folder version** — every file sits directly in the same
+place. Just upload every file below as-is, with no renaming needed.
 
-## Structure
+## Files to upload (all of them, no folders)
 
 ```
-thewebstudios/
-├── index.html          # All page sections
-├── css/style.css        # Design tokens, layout, animations
-├── js/script.js         # Scroll reveals, nav, counters, WhatsApp form
-├── assets/favicon.svg    # Placeholder favicon / logo mark
-└── README.md
+index.html
+style.css
+script.js
+logo.jpg
+favicon.svg
+README.md
 ```
 
-## Replacing the logo
+## How to upload on GitHub
 
-The navbar and footer currently use a text mark (`TW` on a gradient square) as a placeholder logo. To use your real logo:
+1. Open your repository on GitHub.
+2. Click **Add file → Upload files**.
+3. Select / drag in **all 6 files above** at once.
+4. Scroll down, click **Commit changes**.
 
-1. Add your logo file to `assets/` (e.g. `assets/logo.png`).
-2. In `index.html`, find every `<span class="mark">TW</span>` and replace it with:
-   ```html
-   <img src="assets/logo.png" alt="TheWebStudios" class="mark-img" />
-   ```
+That's it — no folders, no renaming.
 
-## Editing contact details
+## Turn on GitHub Pages
 
-- WhatsApp number is set to `919897286952` everywhere (search-and-replace this in `index.html` if it changes).
+1. Go to **Settings → Pages** in your repo.
+2. Under "Build and deployment", set **Source: Deploy from a branch**.
+3. Branch: **main**, folder: **/ (root)**. Click **Save**.
+4. Wait 1–2 minutes, then visit the link GitHub shows you
+   (looks like `https://your-username.github.io/repo-name/`).
+
+## Updating content later
+
+- WhatsApp number: search `919897286952` in `index.html` and replace everywhere.
 - Email placeholder: `hello@thewebstudios.in` — update to your real email.
-
-## Running locally
-
-Just open `index.html` in a browser, or serve the folder with any static server:
-
-```bash
-npx serve .
-```
-
-## Deploying on GitHub Pages
-
-1. Push this folder to a GitHub repository.
-2. Go to **Settings → Pages**.
-3. Set source to the `main` branch, root folder.
-4. Your site will be live at `https://<username>.github.io/<repo-name>/`.
+- Logo: replace `logo.jpg` with a new image of the same filename to update
+  it everywhere at once.
