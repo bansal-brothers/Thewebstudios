@@ -268,11 +268,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .logo {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 11px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(17px, 4.4vw, 23px);
-  letter-spacing: -0.015em;
+  font-size: clamp(24px, 6.6vw, 33px);
+  letter-spacing: -0.02em;
   white-space: nowrap;
   flex-shrink: 1;
   min-width: 0;
@@ -301,7 +301,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 16px;
   box-shadow: var(--shadow-brand);
 }
-.logo img.mark-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-brand); flex-shrink: 0; }
+.logo img.mark-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-brand); flex-shrink: 0; }
 
 .nav-links {
   display: flex;
@@ -948,8 +948,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Testimonials
+   Illustration / Partner section
    ============================================================ */
+.illustration-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+.illustration-visual { display: flex; justify-content: center; }
+.girl-illustration { width: 100%; max-width: 340px; height: auto; }
+.illustration-copy .eyebrow { margin-bottom: 18px; }
+.illustration-copy h2 { font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 16px; }
+.illustration-copy p { color: var(--ink-soft); font-size: 16.5px; max-width: 480px; }
+
+.girl-illustration .float-a { animation: floatSmall 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.girl-illustration .float-b { animation: floatSmall 4.2s ease-in-out infinite; animation-delay: -1.4s; transform-box: fill-box; transform-origin: center; }
+.girl-illustration .float-c { animation: floatSmall 3.9s ease-in-out infinite; animation-delay: -0.7s; transform-box: fill-box; transform-origin: center; }
+
+@keyframes floatSmall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@media (max-width: 900px) {
+  .illustration-grid { grid-template-columns: 1fr; }
+  .illustration-copy p { max-width: none; }
+}
 .testi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
